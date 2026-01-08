@@ -16,19 +16,18 @@ local ScriptsBloxTab = Window:AddTab({ Title = "Scripts Blox Fruits", Icon = "te
 local ScriptsBrainrotTab = Window:AddTab({ Title = "ScriptsBrainrot", Icon = "terminal" })
 local SobreOsScriptsTab = Window:AddTab({ Title = "Sobre Os Scripts", Icon = "terminal" })
 local InfoTab = Window:AddTab({ Title = "Info", Icon = "info" })
-local SettingsTab = Window:AddTab({ Title = "Settings", Icon = "settings" })
 
 ScriptsBrainrotTab:AddButton({
     Title = "Executar lennon hub",
     Callback = function()
-        loadstring(game:HttpGet("https://SEU_LINK_AQUI/script.lua"))()
+        loadstring(game:HttpGet("https://pastefy.app/MJw2J4T6/raw"))()
     end
 })
 
 ScriptsBrainrotTab:AddButton({
     Title = "Executar miranda",
     Callback = function()
-        loadstring(game:HttpGet("https://SEU_LINK_AQUI/script.lua"))()
+        loadstring(game:HttpGet("https://pastefy.app/JJVhs3rK/raw"))()
     end
 })
 
