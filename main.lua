@@ -16,6 +16,7 @@ local ScriptsBloxTab = Window:AddTab({ Title = "Scripts Blox Fruits", Icon = "te
 local ScriptsBrainrotTab = Window:AddTab({ Title = "ScriptsBrainrot", Icon = "terminal" })
 local SobreOsScriptsTab = Window:AddTab({ Title = "Sobre Os Scripts", Icon = "terminal" })
 local InfoTab = Window:AddTab({ Title = "Info", Icon = "info" })
+local SettingsTab = Window:AddTab({ Title = "Settings", Icon = "settings" })
 
 ScriptsBrainrotTab:AddButton({
     Title = "Executar lennon hub",
@@ -46,29 +47,29 @@ SobreOsScriptsTab:AddParagraph({
     Content = "Se faltar algum script, entre no servidor que está na aba Info, abra um ticket e envie o link do script para ser adicionado."
 })
 
-local Toggle = SettingsTab:AddToggle({
+SettingsTab:AddToggle({
     Title = "Toggle Teste",
     Default = false,
     Callback = function(Value)
-        print("Toggle changed:", Value)
+        print(Value)
     end
 })
 
-local Slider = SettingsTab:AddSlider({
+SettingsTab:AddSlider({
     Title = "Slider Teste",
     Min = 0,
     Max = 100,
     Default = 50,
     Callback = function(Value)
-        print("Slider changed:", Value)
+        print(Value)
     end
 })
 
-local Input = SettingsTab:AddInput({
+SettingsTab:AddInput({
     Title = "Input Teste",
     Placeholder = "Digite algo",
     Callback = function(Value)
-        print("Input changed:", Value)
+        print(Value)
     end
 })
 
