@@ -76,8 +76,6 @@ Fluent:Notify({
 
 SaveManager:LoadAutoloadConfig()
 
--- BOTÃO TOGGLE (FUNCIONA EM PASTEFY / GITHUB)
-
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
@@ -94,6 +92,10 @@ button.BackgroundTransparency = 1
 button.Image = "rbxassetid://71062543907599"
 button.Active = true
 button.Draggable = true
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(1, 0)
+corner.Parent = button
 
 local minimized = false
 
