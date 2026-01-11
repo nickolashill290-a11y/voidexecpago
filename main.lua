@@ -1,6 +1,14 @@
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Fluent = loadstring(game:HttpGet(
+    "https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"
+))()
+
+local SaveManager = loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"
+))()
+
+local InterfaceManager = loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"
+))()
 
 local Window = Fluent:CreateWindow({
     Title = "voidexec[beta] " .. Fluent.Version,
@@ -12,7 +20,6 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
-local ScriptsBloxTab = Window:AddTab({ Title = "Scripts Blox Fruits", Icon = "terminal" })
 local ScriptsBrainrotTab = Window:AddTab({ Title = "ScriptsBrainrot", Icon = "terminal" })
 local SobreOsScriptsTab = Window:AddTab({ Title = "Sobre Os Scripts", Icon = "terminal" })
 local InfoTab = Window:AddTab({ Title = "Info", Icon = "info" })
@@ -44,50 +51,57 @@ InfoTab:AddParagraph({
 
 SobreOsScriptsTab:AddParagraph({
     Title = "Aviso",
-    Content = "Se faltar algum script, entre no servidor que está na aba Info, abra um ticket e envie o link do script para ser adicionado."
-})
-
-SettingsTab:AddToggle({
-    Title = "Toggle Teste",
-    Default = false,
-    Callback = function(Value)
-        print(Value)
-    end
-})
-
-SettingsTab:AddSlider({
-    Title = "Slider Teste",
-    Min = 0,
-    Max = 100,
-    Default = 50,
-    Callback = function(Value)
-        print(Value)
-    end
-})
-
-SettingsTab:AddInput({
-    Title = "Input Teste",
-    Placeholder = "Digite algo",
-    Callback = function(Value)
-        print(Value)
-    end
+    Content = "Se faltar algum script, entre no servidor da aba Info e abra um ticket."
 })
 
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
+
 SaveManager:IgnoreThemeSettings()
 SaveManager:SetIgnoreIndexes({})
-InterfaceManager:SetFolder("FluentScriptHub")
-SaveManager:SetFolder("FluentScriptHub/specific-game")
+
+InterfaceManager:SetFolder("VoidExec")
+SaveManager:SetFolder("VoidExec/configs")
+
 InterfaceManager:BuildInterfaceSection(SettingsTab)
 SaveManager:BuildConfigSection(SettingsTab)
 
 Window:SelectTab(1)
 
 Fluent:Notify({
-    Title = "Fluent",
-    Content = "O script foi carregado.",
-    Duration = 8
+    Title = "VoidExec",
+    Content = "Script carregado",
+    Duration = 5
 })
 
 SaveManager:LoadAutoloadConfig()
+
+-- BOTÃO TOGGLE (FUNCIONA EM PASTEFY / GITHUB)
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local ToggleGui = Instance.new("ScreenGui")
+ToggleGui.Name = "VoidExecToggle"
+ToggleGui.ResetOnSpawn = false
+ToggleGui.Parent = player:WaitForChild("PlayerGui")
+
+local button = Instance.new("ImageButton")
+button.Parent = ToggleGui
+button.Size = UDim2.fromOffset(50, 50)
+button.Position = UDim2.fromScale(0.02, 0.5)
+button.BackgroundTransparency = 1
+button.Image = "rbxassetid://71062543907599"
+button.Active = true
+button.Draggable = true
+
+local minimized = false
+
+button.MouseButton1Click:Connect(function()
+    if minimized then
+        Window:Minimize(false)
+    else
+        Window:Minimize(true)
+    end
+    minimized = not minimized
+end)
